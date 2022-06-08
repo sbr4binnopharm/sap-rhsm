@@ -48,10 +48,10 @@
   when: (sap_rhsm_username is defined and sap_rhsm_password is defined) or
         (sap_rhsm_activationkey is defined and sap_rhsm_org_id is defined)
 
-- name: 'Ensure RHEL minor release is locked to SAP certified release'
-  command: 'subscription-manager release --set={{ ansible_distribution_version }}'
-  register: rhsm_lock
-  changed_when: "'Release set to' in rhsm_lock.stdout"
+#- name: 'Ensure RHEL minor release is locked to SAP certified release'
+#  command: 'subscription-manager release --set={{ ansible_distribution_version }}'
+#  register: rhsm_lock
+#  changed_when: "'Release set to' in rhsm_lock.stdout"
 
 - name: "Obtain currently enabled repos"
   shell: 'set -o pipefail && subscription-manager repos --list-enabled | sed -ne "s/^Repo ID:[^a-zA-Z0-9]*\(.*\)/\1/p"'
